@@ -1,25 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {Fragment, useState} from 'react';
+import Inicio from './components/Inicio'
+import Batalla from './components/Batalla'
 
 function App() {
+  const [champ, setChamp] = useState(0)
+  const [champEnemigo, setChampEnemigo] = useState(0)
+  const [bool, setBool] = useState(true)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Fragment>
+      {bool
+      ?
+      <Inicio
+        setChamp={setChamp}
+        champ={champ}
+        setBool={setBool}
+        setChampEnemigo={setChampEnemigo}
+      />
+      :
+      <Batalla
+        bool={bool}
+        setBool={setBool}
+        champ={champ}
+        champEnemigo={champEnemigo}
+      />
+      }
+    </Fragment>
   );
 }
 
